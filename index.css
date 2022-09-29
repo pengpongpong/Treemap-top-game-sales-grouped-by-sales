@@ -1,0 +1,18 @@
+body {
+  width: 50vw;
+  height: 100vh;
+  background: linear-gradient(45deg, #CDF0EA, #A7D2CB 50%);
+}
+@media only screen and (max-height: 1400px) {
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* #chart {
+    border: 1px solid black
+} */
+#legend {
+  margin: 1rem;
+}/*# sourceMappingURL=index.css.map */
