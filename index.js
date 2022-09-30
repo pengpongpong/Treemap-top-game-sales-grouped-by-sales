@@ -92,7 +92,7 @@ function wrapText(selection) {
 let color = d3.scaleOrdinal()
             .domain(["200Mil", "100Mil", "50Mil", "20Mil"])
             .range(["#7FBCD2", "#F2D388", "#AEBDCA", "#ABD9FF"])
-// font-size
+// scale font-size
 let font = d3.scaleOrdinal()
             .domain(["200Mil", "100Mil", "50Mil", "20Mil"])
             .range(["16px", "14px", "12px", "10px"])
@@ -139,11 +139,10 @@ Promise.all([
             .attr("y", d => d.y0 + 20)
             .text(d => {if (d.data.parent !== "200Mil") {return d.data.name}})
             .style("font-size", d => font(d.data.parent))
-            // .style("font-size", fontSize)
             .style("fill", "black")
+            .call(wrapText)
             // .attr("font-weight", "bold")
             // .style("text-transform", "uppercase")
-            .call(wrapText)
 
     svg.selectAll("big")
         .data(root.leaves())
@@ -153,7 +152,6 @@ Promise.all([
             .attr("y", d => d.y0 + 30)
             .text(d => {if (d.data.parent === "200Mil") {return d.data.name}})
             .style("font-size", d => font(d.data.parent))
-            // .style("font-size", fontSize)
             .style("fill", "black")
             // .attr("font-weight", "bold")
             // .style("text-transform", "uppercase")
@@ -161,8 +159,8 @@ Promise.all([
 
 // legend
 let legendScale = d3.scaleOrdinal()
-.domain(["At least 200 million sales", "At least 100 million sales", "At least 50 million sales", "At least 20 million sales"])
-.range(["#7FBCD2", "#F2D388", "#AEBDCA", "#ABD9FF"])
+                    .domain(["At least 200 million sales", "At least 100 million sales", "At least 50 million sales", "At least 20 million sales"])
+                    .range(["#7FBCD2", "#F2D388", "#AEBDCA", "#ABD9FF"])
 
 let legend = d3.select("#legend")
         .append("svg")

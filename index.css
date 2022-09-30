@@ -3,8 +3,9 @@ body {
   height: 100vh;
   background: linear-gradient(45deg, #CDF0EA, #A7D2CB 50%);
 }
+
 @media only screen and (max-height: 1400px) {
-  body {
+  #charts {
     display: flex;
     flex-direction: row;
   }
@@ -16,4 +17,9 @@ body {
 #legend {
   margin: 1rem;
   font-weight: bold;
+}
+
+h3 {
+  text-align: center;
+  text-transform: uppercase;
 }/*# sourceMappingURL=index.css.map */
