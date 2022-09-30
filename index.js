@@ -32,8 +32,9 @@ const mouseover = e => {
 const mousemove = e => {
     tooltip
         .html(`
+        <strong>Sales:</strong> ${e.toElement.__data__.data.value} Million<br>
         <strong>Release-Date:</strong> ${e.toElement.__data__.data.date}<br>
-        <strong>About:</strong> <br> ${e.toElement.__data__.data.note}`)
+        <strong>About:</strong> ${e.toElement.__data__.data.note}`)
     .style("left", `${e.pageX + 15}px`)
     .style("top", `${e.pageY}px`)
 }
@@ -91,7 +92,7 @@ function wrapText(selection) {
 let color = d3.scaleOrdinal()
             .domain(["200Mil", "100Mil", "50Mil", "20Mil"])
             .range(["#7FBCD2", "#F2D388", "#AEBDCA", "#ABD9FF"])
-
+// font-size
 let font = d3.scaleOrdinal()
             .domain(["200Mil", "100Mil", "50Mil", "20Mil"])
             .range(["16px", "14px", "12px", "10px"])
@@ -156,7 +157,6 @@ Promise.all([
             .style("fill", "black")
             // .attr("font-weight", "bold")
             // .style("text-transform", "uppercase")
-            // .call(wrapText)
     })           
 
 // legend
@@ -167,15 +167,13 @@ let legendScale = d3.scaleOrdinal()
 let legend = d3.select("#legend")
         .append("svg")
             .attr("width", "210px")
-            .attr("height", "100")
+            .attr("height", "100px")
             .style("border", "solid")
         .append("g")
             .attr("class", "legend")
             .attr("transform", `translate(10, 10)`)
 
-    let legendOrdinal = d3.legendColor()
-    .cells(["200Mil", "100Mil", "50Mil", "20Mil"])
-    .scale(legendScale)
+let legendOrdinal = d3.legendColor()
+                    .scale(legendScale)
 
-
-    legend.call(legendOrdinal)
+legend.call(legendOrdinal)
